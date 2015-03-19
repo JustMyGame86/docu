@@ -6,7 +6,10 @@ namespace Docu.IO
     {
         public void WriteFile(string fileName, string content)
         {
-            File.WriteAllText(fileName, content);
+            using (StreamWriter sw = new StreamWriter(fileName, false, System.Text.Encoding.UTF8))
+            {
+                sw.Write(content);
+            }
         }
 
         public void CreateDirectory(string path)
