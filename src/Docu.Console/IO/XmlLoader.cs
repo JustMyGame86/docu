@@ -6,7 +6,10 @@ namespace Docu.IO
     {
         public string LoadFrom(string xmlFileName)
         {
-            return File.ReadAllText(xmlFileName);
+            using (StreamReader sr = new StreamReader(xmlFileName, true))
+            {
+                return sr.ReadToEnd();
+            }
         }
     }
 }
